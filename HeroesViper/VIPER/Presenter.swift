@@ -17,7 +17,7 @@ protocol AnyPresenter {
     var interactor : AnyInteractor? {get set}
     var view : AnyView? {get set}
     
-    func interactorDidDownloadCrypto(result: Result<[Hero], Error>)
+    func interactorDidDownloadHero(result: Result<[Hero], Error>)
 }
 
 class HeroPresenter : AnyPresenter {
@@ -26,13 +26,13 @@ class HeroPresenter : AnyPresenter {
     
     var interactor: AnyInteractor? {
         didSet {
-            interactor?.downloadCrypto()
+            interactor?.downloadHero()
         }
     }
     
     var view: AnyView?
     
-    func interactorDidDownloadCrypto(result: Result<[Hero], Error>) {
+    func interactorDidDownloadHero(result: Result<[Hero], Error>) {
         switch result {
         case .success(let hero):
             view?.update(with: hero)

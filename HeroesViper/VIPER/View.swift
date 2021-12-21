@@ -9,7 +9,7 @@ import UIKit
 protocol AnyView {
     var presenter : AnyPresenter? {get set}
     
-    func update(with cryptos: [Hero])
+    func update(with hero: [Hero])
     func update(with error: String)
 }
 
@@ -99,9 +99,9 @@ class HeroViewController : UIViewController, AnyView, UITableViewDelegate, UITab
     }
     
     
-    func update(with cryptos: [Hero]){
+    func update(with heroes: [Hero]){
         DispatchQueue.main.async {
-            self.heroes = cryptos
+            self.heroes = heroes
             self.messageLabel.isHidden = true
             self.tableView.reloadData()
             self.tableView.isHidden = false
